@@ -10,6 +10,18 @@ local-migration-up:
 
 force-start:
 	docker compose up -d
-	curl --request POST -sL \
-	     --url 'http://example.com'\
-	     --output './path/to/file'
+
+CREATE_URL=http://localhost:8080/create/12345
+REFRESH_URL=http://localhost:8080/refresh
+JSON_FILE=response.json
+
+check: fetch send
+
+fetch:
+	curl -X POST $(CREATE_URL) -H "Content-Type: application/json" -o $(JSON_FILE)
+
+send:
+	curl -X POST $(REFRESH_URL) -H "Content-Type: application/json" --data @$(JSON_FILE)
+
+clean:
+	rm -f $(JSON_FILE)
