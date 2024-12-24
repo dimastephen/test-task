@@ -11,7 +11,7 @@ local-migration-up:
 force-start:
 	docker compose up -d
 
-CREATE_URL=http://localhost:8080/create/12
+CREATE_URL=http://localhost:8080/create/111
 REFRESH_URL=http://localhost:8080/refresh
 JSON_FILE=$(CURDIR)/response.json
 
