@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
+	"log"
 	"os"
 	"time"
 )
@@ -37,7 +38,7 @@ func generateRefreshToken() (string, error) {
 }
 
 func SendEmailNotification() {
-
+	log.Println("Отправлен емейл с уведомлением о смене IP")
 }
 
 func decodeAccessToken(accessToken string, key []byte) (*accessClaims, error) {
